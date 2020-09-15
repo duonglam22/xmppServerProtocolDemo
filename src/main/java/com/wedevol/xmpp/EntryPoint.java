@@ -56,5 +56,6 @@ public class EntryPoint {
 		process.fillNotificationQueue(numberOfMsg);
 //		process.fillDataQueue(numberOfMsg);
 		process.start();
+
 	}
 }

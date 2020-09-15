@@ -34,7 +34,7 @@ public class Process extends Thread {
 
     public void fillNotificationQueue(int size) {
         for(int i = 1; i <= size; ++i) {
-            String toRegId = "/topics/" + i%4000;
+            String toRegId = "/topics/" + i;
             String messageId = Util.getUniqueMessageId();
             Map<String, String> notiPayload = new HashMap<String, String>();
             notiPayload.put(Util.TITLE_ATTRIBUTE_NOTIFICATION, "vnpt-pay-" + i);
@@ -63,7 +63,12 @@ public class Process extends Thread {
             else {
                 CcsOutMessage message = mQueue.poll();
                 String jsonRequest = MessageHelper.createJsonOutMessage(message);
-		        ccsClient.send(jsonRequest);
+		        try {
+                    ccsClient.send(jsonRequest);
+                }
+		        catch (Exception ex) {
+		            logger.info("send data exceotion: " + ex.toString());
+                }
             }
         }
     }
