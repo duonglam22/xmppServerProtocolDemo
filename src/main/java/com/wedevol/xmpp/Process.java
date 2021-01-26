@@ -15,10 +15,16 @@ public class Process extends Thread {
     private static final Logger logger = Logger.getLogger(Process.class.getName());
     Queue<CcsOutMessage> mQueue = new ArrayDeque<>(400000);
     CcsClient ccsClient = null;
+    private boolean isRunning = true;
 
     public Process(CcsClient ccsClient) {
         this.ccsClient = ccsClient;
     }
+
+    public void sturnOffProcess() {
+        isRunning = false;
+    }
+
     public void fillDataQueue(int size) {
         for(int i = 1; i <= size; ++i) {
             String toRegId = "registerId-" + i;

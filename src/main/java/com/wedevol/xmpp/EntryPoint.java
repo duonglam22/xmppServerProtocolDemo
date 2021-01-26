@@ -31,7 +31,7 @@ public class EntryPoint {
 		String fcmServerKey = "AAAAFpuBt2c:APA91bEtr3dDnEooTASU_W24bn13d2G0W_VXOXXLSJSJxSZpLNKxQEENYl-mgr-Juap2U8Qj61C8WEVEbKBYl7gLJFwE9RIRVJXMXuncF3MdhBOTmp-sfQB4OPRI2N4vFFkDuf9SZROd";
 		String toRegId = "registerId";
 
-		CcsClient ccsClient = CcsClient.prepareClient(fcmProjectSenderId, fcmServerKey, true);
+		CcsClient ccsClient = CcsClient.prepareClient(fcmProjectSenderId, fcmServerKey, false);
 
 		try {
 			ccsClient.connect();
